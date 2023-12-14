@@ -1,0 +1,52 @@
+[2023-12-15 00:59:11.950] | DEBUG | services.sqs_services | publish_job | sqs_services.py:27 | Job pushed with id: e6d05cd2-044c-497d-b6f8-047701a9a1ce
+[2023-12-15 00:59:11.954] | INFO | services.middlewares | api_timing_middleware | middlewares.py:13 | API call: /addJob completed in 0.2514078617095947 seconds
+[2023-12-15 00:59:12.151] | DEBUG | services.job_queue_services | add_job | job_queue_services.py:20 | Pushing the job to the queue with Id ab3f1a66-4b85-4a6a-b502-fc0a1caecb21
+[2023-12-15 00:59:12.256] | DEBUG | services.sqs_services | publish_job | sqs_services.py:27 | Job pushed with id: ab3f1a66-4b85-4a6a-b502-fc0a1caecb21
+[2023-12-15 00:59:12.257] | INFO | services.middlewares | api_timing_middleware | middlewares.py:13 | API call: /addJob completed in 0.19286608695983887 seconds
+[2023-12-15 00:59:12.561] | DEBUG | services.job_queue_services | add_job | job_queue_services.py:20 | Pushing the job to the queue with Id 60d4225d-d088-49b7-b15f-eaaa689864cc
+[2023-12-15 00:59:12.670] | DEBUG | services.sqs_services | publish_job | sqs_services.py:27 | Job pushed with id: 60d4225d-d088-49b7-b15f-eaaa689864cc
+[2023-12-15 00:59:12.672] | INFO | services.middlewares | api_timing_middleware | middlewares.py:13 | API call: /addJob completed in 0.21839475631713867 seconds
+[2023-12-15 00:59:12.971] | DEBUG | services.job_queue_services | add_job | job_queue_services.py:20 | Pushing the job to the queue with Id b78d716f-24ee-49d1-9613-a6615103d265
+[2023-12-15 00:59:13.075] | DEBUG | services.sqs_services | publish_job | sqs_services.py:27 | Job pushed with id: b78d716f-24ee-49d1-9613-a6615103d265
+[2023-12-15 00:59:13.077] | INFO | services.middlewares | api_timing_middleware | middlewares.py:13 | API call: /addJob completed in 0.23984909057617188 seconds
+[2023-12-15 00:59:13.278] | DEBUG | services.job_queue_services | add_job | job_queue_services.py:20 | Pushing the job to the queue with Id 4827e786-da23-41a3-94ab-e1b49febaee7
+[2023-12-15 00:59:13.382] | DEBUG | services.sqs_services | publish_job | sqs_services.py:27 | Job pushed with id: 4827e786-da23-41a3-94ab-e1b49febaee7
+[2023-12-15 00:59:13.384] | INFO | services.middlewares | api_timing_middleware | middlewares.py:13 | API call: /addJob completed in 0.16424226760864258 seconds
+[2023-12-15 00:59:13.689] | DEBUG | services.job_queue_services | add_job | job_queue_services.py:20 | Pushing the job to the queue with Id 552b5a23-82c1-4946-bd2f-a0a02fe081d5
+[2023-12-15 00:59:13.775] | DEBUG | services.sqs_services | publish_job | sqs_services.py:27 | Job pushed with id: 552b5a23-82c1-4946-bd2f-a0a02fe081d5
+[2023-12-15 00:59:13.776] | INFO | services.middlewares | api_timing_middleware | middlewares.py:13 | API call: /addJob completed in 0.17539501190185547 seconds
+[2023-12-15 00:59:13.892] | DEBUG | services.job_queue_services | add_job | job_queue_services.py:20 | Pushing the job to the queue with Id 981a30da-f102-41b4-b243-81ebca482e1a
+[2023-12-15 00:59:13.998] | DEBUG | services.sqs_services | publish_job | sqs_services.py:27 | Job pushed with id: 981a30da-f102-41b4-b243-81ebca482e1a
+[2023-12-15 00:59:13.999] | INFO | services.middlewares | api_timing_middleware | middlewares.py:13 | API call: /addJob completed in 0.19706177711486816 seconds
+[2023-12-15 00:59:14.206] | DEBUG | services.job_queue_services | add_job | job_queue_services.py:20 | Pushing the job to the queue with Id d719c28e-1fc9-42d5-97d7-ef67b382eaaf
+[2023-12-15 00:59:14.265] | DEBUG | services.sqs_services | publish_job | sqs_services.py:27 | Job pushed with id: d719c28e-1fc9-42d5-97d7-ef67b382eaaf
+[2023-12-15 00:59:14.266] | INFO | services.middlewares | api_timing_middleware | middlewares.py:13 | API call: /addJob completed in 0.09798288345336914 seconds
+[2023-12-15 00:59:14.508] | DEBUG | services.job_queue_services | add_job | job_queue_services.py:20 | Pushing the job to the queue with Id b7c97946-6cae-4235-829a-adc4309f0aba
+[2023-12-15 00:59:14.612] | DEBUG | services.sqs_services | publish_job | sqs_services.py:27 | Job pushed with id: b7c97946-6cae-4235-829a-adc4309f0aba
+[2023-12-15 00:59:14.614] | INFO | services.middlewares | api_timing_middleware | middlewares.py:13 | API call: /addJob completed in 0.22899603843688965 seconds
+[2023-12-15 00:59:14.814] | DEBUG | services.job_queue_services | add_job | job_queue_services.py:20 | Pushing the job to the queue with Id e504c221-3f88-4ada-81b0-4f99e1d71456
+[2023-12-15 00:59:14.918] | DEBUG | services.sqs_services | publish_job | sqs_services.py:27 | Job pushed with id: e504c221-3f88-4ada-81b0-4f99e1d71456
+[2023-12-15 00:59:14.919] | INFO | services.middlewares | api_timing_middleware | middlewares.py:13 | API call: /addJob completed in 0.18169879913330078 seconds
+[2023-12-15 00:59:15.225] | DEBUG | services.job_queue_services | add_job | job_queue_services.py:20 | Pushing the job to the queue with Id be0f2cb5-d1ba-48e2-96b1-6cdd1df7ee42
+[2023-12-15 00:59:15.329] | DEBUG | services.sqs_services | publish_job | sqs_services.py:27 | Job pushed with id: be0f2cb5-d1ba-48e2-96b1-6cdd1df7ee42
+[2023-12-15 00:59:15.331] | INFO | services.middlewares | api_timing_middleware | middlewares.py:13 | API call: /addJob completed in 0.21225500106811523 seconds
+[2023-12-15 00:59:15.542] | DEBUG | services.job_queue_services | add_job | job_queue_services.py:20 | Pushing the job to the queue with Id bbe0f8bd-0172-4c82-8f58-0e2d133a0449
+[2023-12-15 00:59:15.635] | DEBUG | services.sqs_services | publish_job | sqs_services.py:27 | Job pushed with id: bbe0f8bd-0172-4c82-8f58-0e2d133a0449
+[2023-12-15 00:59:15.636] | INFO | services.middlewares | api_timing_middleware | middlewares.py:13 | API call: /addJob completed in 0.14967608451843262 seconds
+[2023-12-15 00:59:15.704] | DEBUG | services.job_queue_services | add_job | job_queue_services.py:20 | Pushing the job to the queue with Id 3fc91650-ae2b-42b3-81fc-055890e01467
+[2023-12-15 00:59:15.836] | DEBUG | services.sqs_services | publish_job | sqs_services.py:27 | Job pushed with id: 3fc91650-ae2b-42b3-81fc-055890e01467
+[2023-12-15 00:59:15.837] | INFO | services.middlewares | api_timing_middleware | middlewares.py:13 | API call: /addJob completed in 0.17380380630493164 seconds
+[2023-12-15 00:59:16.093] | DEBUG | services.job_queue_services | add_job | job_queue_services.py:20 | Pushing the job to the queue with Id 2b1e2354-4bdd-4ef3-8e95-770c13887765
+[2023-12-15 00:59:16.148] | DEBUG | services.sqs_services | publish_job | sqs_services.py:27 | Job pushed with id: 2b1e2354-4bdd-4ef3-8e95-770c13887765
+[2023-12-15 00:59:16.149] | INFO | services.middlewares | api_timing_middleware | middlewares.py:13 | API call: /addJob completed in 0.12909531593322754 seconds
+[2023-12-15 00:59:16.248] | DEBUG | services.job_queue_services | add_job | job_queue_services.py:20 | Pushing the job to the queue with Id 12e770bf-bfc9-45f5-9623-fd9b1d80d649
+[2023-12-15 00:59:16.352] | DEBUG | services.sqs_services | publish_job | sqs_services.py:27 | Job pushed with id: 12e770bf-bfc9-45f5-9623-fd9b1d80d649
+[2023-12-15 00:59:16.353] | INFO | services.middlewares | api_timing_middleware | middlewares.py:13 | API call: /addJob completed in 0.15381908416748047 seconds
+[2023-12-15 00:59:16.452] | DEBUG | services.job_queue_services | add_job | job_queue_services.py:20 | Pushing the job to the queue with Id ac8e459d-3f35-44c3-a244-71e095d73ab8
+[2023-12-15 00:59:16.557] | DEBUG | services.sqs_services | publish_job | sqs_services.py:27 | Job pushed with id: ac8e459d-3f35-44c3-a244-71e095d73ab8
+[2023-12-15 00:59:16.558] | INFO | services.middlewares | api_timing_middleware | middlewares.py:13 | API call: /addJob completed in 0.1779038906097412 seconds
+[2023-12-15 00:59:22.188] | INFO | services.middlewares | api_timing_middleware | middlewares.py:13 | API call: /status completed in 0.11202096939086914 seconds
+[2023-12-15 00:59:44.922] | INFO | services.middlewares | api_timing_middleware | middlewares.py:13 | API call: /status completed in 0.08957695960998535 seconds
+[2023-12-15 00:59:51.269] | INFO | services.middlewares | api_timing_middleware | middlewares.py:13 | API call: /status completed in 0.1201469898223877 seconds
+[2023-12-15 00:59:55.571] | INFO | services.middlewares | api_timing_middleware | middlewares.py:13 | API call: /status completed in 0.09583520889282227 seconds
+[2023-12-15 00:59:59.461] | INFO | services.middlewares | api_timing_middleware | middlewares.py:13 | API call: /status completed in 0.051731109619140625 seconds

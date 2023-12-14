@@ -1,0 +1,4 @@
+max_attempts: 3
+max_delay : 4
+processing_system_endpoint: https://ah9x9uxtyc.execute-api.ap-south-1.amazonaws.com/default/autoflow_full_stack_assignment
+sqs_url: https://sqs.ap-south-1.amazonaws.com/298198301142/job_queue.fifo

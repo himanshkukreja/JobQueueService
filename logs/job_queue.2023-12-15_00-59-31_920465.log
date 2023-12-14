@@ -1,0 +1,59 @@
+[2023-12-15 00:59:31.918] | DEBUG | services.sqs_services | process_job | sqs_services.py:89 | Updating job d719c28e-1fc9-42d5-97d7-ef67b382eaaf in the database
+[2023-12-15 00:59:32.018] | DEBUG | __main__ | <module> | worker.py:32 | Deleting the job from queue with jobId d719c28e-1fc9-42d5-97d7-ef67b382eaaf
+[2023-12-15 00:59:32.224] | DEBUG | __main__ | <module> | worker.py:38 | Number of messages in queue, 17
+[2023-12-15 00:59:32.328] | DEBUG | __main__ | <module> | worker.py:24 | Received job with id b7c97946-6cae-4235-829a-adc4309f0aba
+[2023-12-15 00:59:32.428] | DEBUG | services.sqs_services | process_job | sqs_services.py:50 | Making a POST call to the endpoint https://ah9x9uxtyc.execute-api.ap-south-1.amazonaws.com/default/autoflow_full_stack_assignment with job_id b7c97946-6cae-4235-829a-adc4309f0aba
+[2023-12-15 00:59:32.736] | ERROR | services.sqs_services | process_job | sqs_services.py:62 | Job with id b7c97946-6cae-4235-829a-adc4309f0aba failed with response 500
+[2023-12-15 00:59:32.736] | DEBUG | services.sqs_services | process_job | sqs_services.py:66 | Retrying job with id b7c97946-6cae-4235-829a-adc4309f0aba, attempt number 1 which is less than max_attempts
+[2023-12-15 00:59:32.837] | DEBUG | services.sqs_services | publish_job | sqs_services.py:27 | Job pushed with id: b7c97946-6cae-4235-829a-adc4309f0aba
+[2023-12-15 00:59:32.837] | DEBUG | services.sqs_services | process_job | sqs_services.py:89 | Updating job b7c97946-6cae-4235-829a-adc4309f0aba in the database
+[2023-12-15 00:59:32.940] | DEBUG | __main__ | <module> | worker.py:32 | Deleting the job from queue with jobId b7c97946-6cae-4235-829a-adc4309f0aba
+[2023-12-15 00:59:33.098] | DEBUG | __main__ | <module> | worker.py:38 | Number of messages in queue, 17
+[2023-12-15 00:59:33.099] | DEBUG | __main__ | <module> | worker.py:24 | Received job with id d1bdfae1-7c9e-4b1e-8d3a-2b91d6d5bd26
+[2023-12-15 00:59:33.145] | DEBUG | services.sqs_services | process_job | sqs_services.py:50 | Making a POST call to the endpoint https://ah9x9uxtyc.execute-api.ap-south-1.amazonaws.com/default/autoflow_full_stack_assignment with job_id d1bdfae1-7c9e-4b1e-8d3a-2b91d6d5bd26
+[2023-12-15 00:59:33.451] | DEBUG | services.sqs_services | process_job | sqs_services.py:58 | Job with id d1bdfae1-7c9e-4b1e-8d3a-2b91d6d5bd26 processed successfully with response 200
+[2023-12-15 00:59:33.451] | DEBUG | services.sqs_services | process_job | sqs_services.py:89 | Updating job d1bdfae1-7c9e-4b1e-8d3a-2b91d6d5bd26 in the database
+[2023-12-15 00:59:33.555] | DEBUG | __main__ | <module> | worker.py:32 | Deleting the job from queue with jobId d1bdfae1-7c9e-4b1e-8d3a-2b91d6d5bd26
+[2023-12-15 00:59:33.759] | DEBUG | __main__ | <module> | worker.py:38 | Number of messages in queue, 8
+[2023-12-15 00:59:33.760] | DEBUG | __main__ | <module> | worker.py:24 | Received job with id e504c221-3f88-4ada-81b0-4f99e1d71456
+[2023-12-15 00:59:33.861] | DEBUG | services.sqs_services | process_job | sqs_services.py:50 | Making a POST call to the endpoint https://ah9x9uxtyc.execute-api.ap-south-1.amazonaws.com/default/autoflow_full_stack_assignment with job_id e504c221-3f88-4ada-81b0-4f99e1d71456
+[2023-12-15 00:59:34.168] | ERROR | services.sqs_services | process_job | sqs_services.py:62 | Job with id e504c221-3f88-4ada-81b0-4f99e1d71456 failed with response 500
+[2023-12-15 00:59:34.169] | DEBUG | services.sqs_services | process_job | sqs_services.py:66 | Retrying job with id e504c221-3f88-4ada-81b0-4f99e1d71456, attempt number 1 which is less than max_attempts
+[2023-12-15 00:59:34.273] | DEBUG | services.sqs_services | publish_job | sqs_services.py:27 | Job pushed with id: e504c221-3f88-4ada-81b0-4f99e1d71456
+[2023-12-15 00:59:34.273] | DEBUG | services.sqs_services | process_job | sqs_services.py:89 | Updating job e504c221-3f88-4ada-81b0-4f99e1d71456 in the database
+[2023-12-15 00:59:34.375] | DEBUG | __main__ | <module> | worker.py:32 | Deleting the job from queue with jobId e504c221-3f88-4ada-81b0-4f99e1d71456
+[2023-12-15 00:59:34.578] | DEBUG | __main__ | <module> | worker.py:38 | Number of messages in queue, 8
+[2023-12-15 00:59:34.579] | DEBUG | __main__ | <module> | worker.py:24 | Received job with id be0f2cb5-d1ba-48e2-96b1-6cdd1df7ee42
+[2023-12-15 00:59:34.681] | DEBUG | services.sqs_services | process_job | sqs_services.py:50 | Making a POST call to the endpoint https://ah9x9uxtyc.execute-api.ap-south-1.amazonaws.com/default/autoflow_full_stack_assignment with job_id be0f2cb5-d1ba-48e2-96b1-6cdd1df7ee42
+[2023-12-15 00:59:34.989] | DEBUG | services.sqs_services | process_job | sqs_services.py:58 | Job with id be0f2cb5-d1ba-48e2-96b1-6cdd1df7ee42 processed successfully with response 200
+[2023-12-15 00:59:34.989] | DEBUG | services.sqs_services | process_job | sqs_services.py:89 | Updating job be0f2cb5-d1ba-48e2-96b1-6cdd1df7ee42 in the database
+[2023-12-15 00:59:35.093] | DEBUG | __main__ | <module> | worker.py:32 | Deleting the job from queue with jobId be0f2cb5-d1ba-48e2-96b1-6cdd1df7ee42
+[2023-12-15 00:59:35.194] | DEBUG | __main__ | <module> | worker.py:38 | Number of messages in queue, 8
+[2023-12-15 00:59:35.194] | DEBUG | __main__ | <module> | worker.py:24 | Received job with id bbe0f8bd-0172-4c82-8f58-0e2d133a0449
+[2023-12-15 00:59:35.297] | DEBUG | services.sqs_services | process_job | sqs_services.py:50 | Making a POST call to the endpoint https://ah9x9uxtyc.execute-api.ap-south-1.amazonaws.com/default/autoflow_full_stack_assignment with job_id bbe0f8bd-0172-4c82-8f58-0e2d133a0449
+[2023-12-15 00:59:35.603] | DEBUG | services.sqs_services | process_job | sqs_services.py:58 | Job with id bbe0f8bd-0172-4c82-8f58-0e2d133a0449 processed successfully with response 200
+[2023-12-15 00:59:35.604] | DEBUG | services.sqs_services | process_job | sqs_services.py:89 | Updating job bbe0f8bd-0172-4c82-8f58-0e2d133a0449 in the database
+[2023-12-15 00:59:35.707] | DEBUG | __main__ | <module> | worker.py:32 | Deleting the job from queue with jobId bbe0f8bd-0172-4c82-8f58-0e2d133a0449
+[2023-12-15 00:59:35.909] | DEBUG | __main__ | <module> | worker.py:38 | Number of messages in queue, 9
+[2023-12-15 00:59:35.910] | DEBUG | __main__ | <module> | worker.py:24 | Received job with id 3fc91650-ae2b-42b3-81fc-055890e01467
+[2023-12-15 00:59:36.012] | DEBUG | services.sqs_services | process_job | sqs_services.py:50 | Making a POST call to the endpoint https://ah9x9uxtyc.execute-api.ap-south-1.amazonaws.com/default/autoflow_full_stack_assignment with job_id 3fc91650-ae2b-42b3-81fc-055890e01467
+[2023-12-15 00:59:36.321] | ERROR | services.sqs_services | process_job | sqs_services.py:62 | Job with id 3fc91650-ae2b-42b3-81fc-055890e01467 failed with response 500
+[2023-12-15 00:59:36.321] | DEBUG | services.sqs_services | process_job | sqs_services.py:66 | Retrying job with id 3fc91650-ae2b-42b3-81fc-055890e01467, attempt number 1 which is less than max_attempts
+[2023-12-15 00:59:36.422] | DEBUG | services.sqs_services | publish_job | sqs_services.py:27 | Job pushed with id: 3fc91650-ae2b-42b3-81fc-055890e01467
+[2023-12-15 00:59:36.422] | DEBUG | services.sqs_services | process_job | sqs_services.py:89 | Updating job 3fc91650-ae2b-42b3-81fc-055890e01467 in the database
+[2023-12-15 00:59:36.527] | DEBUG | __main__ | <module> | worker.py:32 | Deleting the job from queue with jobId 3fc91650-ae2b-42b3-81fc-055890e01467
+[2023-12-15 00:59:37.037] | DEBUG | __main__ | <module> | worker.py:38 | Number of messages in queue, 9
+[2023-12-15 00:59:37.038] | DEBUG | __main__ | <module> | worker.py:24 | Received job with id 2b1e2354-4bdd-4ef3-8e95-770c13887765
+[2023-12-15 00:59:37.139] | DEBUG | services.sqs_services | process_job | sqs_services.py:50 | Making a POST call to the endpoint https://ah9x9uxtyc.execute-api.ap-south-1.amazonaws.com/default/autoflow_full_stack_assignment with job_id 2b1e2354-4bdd-4ef3-8e95-770c13887765
+[2023-12-15 00:59:37.445] | DEBUG | services.sqs_services | process_job | sqs_services.py:58 | Job with id 2b1e2354-4bdd-4ef3-8e95-770c13887765 processed successfully with response 200
+[2023-12-15 00:59:37.446] | DEBUG | services.sqs_services | process_job | sqs_services.py:89 | Updating job 2b1e2354-4bdd-4ef3-8e95-770c13887765 in the database
+[2023-12-15 00:59:37.548] | DEBUG | __main__ | <module> | worker.py:32 | Deleting the job from queue with jobId 2b1e2354-4bdd-4ef3-8e95-770c13887765
+[2023-12-15 00:59:37.752] | DEBUG | __main__ | <module> | worker.py:38 | Number of messages in queue, 9
+[2023-12-15 00:59:37.753] | DEBUG | __main__ | <module> | worker.py:24 | Received job with id 12e770bf-bfc9-45f5-9623-fd9b1d80d649
+[2023-12-15 00:59:37.855] | DEBUG | services.sqs_services | process_job | sqs_services.py:50 | Making a POST call to the endpoint https://ah9x9uxtyc.execute-api.ap-south-1.amazonaws.com/default/autoflow_full_stack_assignment with job_id 12e770bf-bfc9-45f5-9623-fd9b1d80d649
+[2023-12-15 00:59:38.163] | DEBUG | services.sqs_services | process_job | sqs_services.py:58 | Job with id 12e770bf-bfc9-45f5-9623-fd9b1d80d649 processed successfully with response 200
+[2023-12-15 00:59:38.164] | DEBUG | services.sqs_services | process_job | sqs_services.py:89 | Updating job 12e770bf-bfc9-45f5-9623-fd9b1d80d649 in the database
+[2023-12-15 00:59:38.267] | DEBUG | __main__ | <module> | worker.py:32 | Deleting the job from queue with jobId 12e770bf-bfc9-45f5-9623-fd9b1d80d649
+[2023-12-15 00:59:38.369] | DEBUG | __main__ | <module> | worker.py:38 | Number of messages in queue, 10
+[2023-12-15 00:59:38.370] | DEBUG | __main__ | <module> | worker.py:24 | Received job with id 0af6d1b9-c725-463b-9edb-0b799dcaccd9
+[2023-12-15 00:59:38.417] | DEBUG | services.sqs_services | process_job | sqs_services.py:50 | Making a POST call to the endpoint https://ah9x9uxtyc.execute-api.ap-south-1.amazonaws.com/default/autoflow_full_stack_assignment with job_id 0af6d1b9-c725-463b-9edb-0b799dcaccd9
