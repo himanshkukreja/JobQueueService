@@ -1,0 +1,28 @@
+{
+    "executionRoleArn": "arn:aws:iam::530762056989:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+      {
+        "portMappings": [
+          {
+            "hostPort": 8000,
+            "protocol": "tcp",
+            "containerPort": 8000
+          }
+        ],
+        "cpu": 1024 ,
+        "memory": 900,
+        "image": "${APPLICATION_IMAGE}",
+        "essential": true,
+        "name": "job_queue_service_container"
+      }
+    ],
+    "placementConstraints": [],
+    "memory": "900",
+    "taskRoleArn": "arn:aws:iam::530762056989:role/ecsTaskExecutionRole",
+    "requiresCompatibilities": [
+      "EC2"
+    ],
+    "cpu": "1024",
+    "volumes": [],
+    "family": "job_queue_service_task_def"
+  }

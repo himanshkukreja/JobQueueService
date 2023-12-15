@@ -1,0 +1,233 @@
+name: Push to ECR, Register Task definition and Run task on ECS
+
+on:
+  push:
+    branches: [ "production" ]
+
+# Environment Variables and Secrets
+env:
+  AWS_REGION: ${{ secrets.AWS_REGION }}
+  ECR_REPOSITORY:  ${{ secrets.MY_ECR_REPOSITORY }}
+  ECS_TASK_DEFINITION: taskdefinition.json
+  ECS_CLUSTER: ${{ secrets.ECS_CLUSTER }}
+  GITHUB_TOKEN: ${{ secrets.MY_GITHUB_PAT }}
+
+
+permissions:
+  contents: read
+
+jobs:
+
+ # ... Your deploy job starts here ...
+  deploy:
+    needs: setup-infrastructure
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+    # Checking out the latest code from the production branch
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # Configuring AWS credentials for the subsequent steps
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+
+
+    # Checking if the ECR repository exists and creating it if it doesn't
+    - name: Ensure ECR repositories exist
+      run: |
+        # List of repositories to ensure existence
+        REPOS=("${{ env.ECR_REPOSITORY }}" "${{ env.ECR_REPOSITORY }}-nginx")
+
+        for REPO in "${REPOS[@]}"; do
+          # Check if the ECR repository exists
+          REPO_COUNT=$(aws ecr describe-repositories --repository-names $REPO --region ${{ env.AWS_REGION }} 2>&1 | jq '.repositories | length' || echo 0)
+
+          # If the repository doesn't exist, create it
+          if [ "$REPO_COUNT" -eq 0 ]; then
+            aws ecr create-repository --repository-name $REPO --region ${{ env.AWS_REGION }}
+          fi
+        done
+
+
+    # Logging into ECR to push the Docker image later
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+
+    # Checking if there are any images in the ECR repository
+    - name: Check if ECR repository is empty
+      id: check-ecr-empty
+      run: |
+
+        # Fetching the list of images from the ECR repository
+        IMAGES=$(aws ecr list-images --repository-name ${{ env.ECR_REPOSITORY }} --output json)
+        # Check if the IMAGES variable is empty or not
+        if [ "$(echo $IMAGES | jq '.imageIds | length')" -eq 0 ]; then
+          echo "ECR_REPO_EMPTY=1" >> $GITHUB_ENV
+        else
+          echo "ECR_REPO_EMPTY=0" >> $GITHUB_ENV
+        fi
+        
+    # Setting the semantic version tag for the Docker image
+    - name: Set semantic version tag
+      id: set-semantic-version-tag
+      run: |
+
+        # Handling the versioning based on the repository state
+        # Logic for setting or incrementing the image tag
+
+        if [ "${{ env.ECR_REPO_EMPTY }}" -eq 1 ]; then
+          # Set the default semantic version tag if the ECR repository is empty
+          SEMANTIC_TAG="v1.0.0"
+        else
+          # Get the latest semantic version tag from the ECR repository
+          LATEST_TAG=$(aws ecr list-images --repository-name ${{ env.ECR_REPOSITORY }} --query 'imageIds[].imageTag' --output json | jq -r 'map(select(test("^v[0-9]+\\.[0-9]+\\.[0-9]+$"))) | sort_by((.[1:] | split(".") | map(tonumber))) | reverse | .[0]')
+          if [ "$LATEST_TAG" == "null" ]; then
+            # Set the default semantic version tag if there are no valid semantic tags in the ECR repository
+            SEMANTIC_TAG="v1.0.0"
+          else
+            # Increment the major version of the latest semantic version tag
+            MAJOR=$(echo $LATEST_TAG | cut -d'.' -f1 | tr -d 'v')
+            MINOR=$(echo $LATEST_TAG | cut -d'.' -f2)
+            PATCH=$(echo $LATEST_TAG | cut -d'.' -f3)
+            NEW_MINOR=$((MINOR + 1))
+            NEW_MAJOR=$((MAJOR + 1))
+            NEW_PATCH=$((PATCH + 1))
+            SEMANTIC_TAG="v${MAJOR}.${MINOR}.${NEW_PATCH}"
+          fi
+        fi
+        
+        # Set the semantic version tag as an environment variable
+        echo "SEMANTIC_TAG=$SEMANTIC_TAG" >> $GITHUB_ENV
+        echo "Set SEMANTIC_TAG: $SEMANTIC_TAG"
+    
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Create and use docker-container driver builder
+      run: |
+        docker buildx create --name mybuilder --use
+
+    - name: Cache Docker layers
+      uses: actions/cache@v2
+      with:
+        path: /tmp/.buildx-cache
+        key: ${{ runner.os }}-buildx-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-buildx-
+
+
+    # Building, tagging, and pushing the nginx docker image to the ECR repository
+    # - name: Build, tag, and push Nginx image to Amazon ECR
+    #   id: build-nginx-image
+    #   uses: docker/build-push-action@v2
+    #   with:
+    #     context: ./nginx  # replace with your nginx Dockerfile directory
+    #     file: ./nginx/Dockerfile  # replace with your nginx Dockerfile path if it's different
+    #     push: true
+    #     tags: ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}-nginx:${{ env.SEMANTIC_TAG }}
+    #     cache-from: type=local,src=/tmp/.buildx-cache
+    #     cache-to: type=local,dest=/tmp/.buildx-cache
+
+    
+    # Building, tagging, and pushing the application Docker image to the ECR repository
+    - name: Build, tag, and push image to Amazon ECR
+      id: build-image
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        push: true
+        tags: ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.SEMANTIC_TAG }}
+        build-args: |
+          AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache
+
+
+    # Installing the envsubst tool to replace environment variables in the ECS task definition
+    - name: Install envsubst
+      run: sudo apt-get install -y gettext-base
+
+
+    # Substituting the Docker image name in the ECS task definition
+    - name: Replace environment variables in task definition
+      run: |
+        envsubst < ${{ env.ECS_TASK_DEFINITION }} > taskdefinition_substituted.json
+      env:
+        APPLICATION_IMAGE: ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.SEMANTIC_TAG  }}
+        NGINX_IMAGE: ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}-nginx:${{ env.SEMANTIC_TAG }}
+
+
+    # Installing the jq tool for handling JSON
+    - name: Install jq
+      run: sudo apt-get install -y jq
+
+
+    # Stopping the tasks from the previous deployment
+    - name: Stop previous tasks
+      run: |
+          FAMILY=$(jq -r '.family' ${{ env.ECS_TASK_DEFINITION }})
+          echo $FAMILY
+          aws ecs list-tasks --cluster ${{ env.ECS_CLUSTER }} --family $FAMILY --desired-status RUNNING --query 'taskArns[]' --output text | while read -r taskArn; do
+            aws ecs stop-task --cluster ${{ env.ECS_CLUSTER }} --task $taskArn
+          done
+
+
+    # Starting the new tasks with the latest Docker image
+    - name: Run Task on Amazon ECS
+      id: run-task
+      run: |
+
+        # Registering the task definition and starting a new task
+
+        TASK_DEF_ARN=$(aws ecs register-task-definition --cli-input-json file://taskdefinition_substituted.json --query 'taskDefinition.taskDefinitionArn' --output text)
+        TASK_ARN=$(aws ecs run-task --cluster ${{ env.ECS_CLUSTER }} --task-definition $TASK_DEF_ARN --count 1 --started-by github-actions-${{ github.actor }} --query 'tasks[0].taskArn' --output text)
+        echo "TASK_ARN=$TASK_ARN" >> $GITHUB_ENV
+
+
+    # Waiting for the task to start running before exiting the workflow successfully or failing it after max retries are reached 
+
+    - name: Wait and check for task to start
+      run: |
+        max_retries=10
+        retry_interval=10  # in seconds
+        retry_count=0
+
+        while [ $retry_count -lt $max_retries ]; do
+          TASK_STATUS=$(aws ecs describe-tasks --cluster ${{ env.ECS_CLUSTER }} --tasks $TASK_ARN --query 'tasks[0].lastStatus' --output text)
+          echo "Current task status: $TASK_STATUS"
+          
+          # Break the loop if the task has started
+          if [ "$TASK_STATUS" == "RUNNING" ]; then
+            echo "Task started successfully"
+            echo "Exit the workflow successfully"
+            echo "done=1" >> $GITHUB_ENV
+            break
+          fi
+
+          # Increment the retry count and wait for the next interval
+          retry_count=$((retry_count + 1))
+          echo "Waiting for $retry_interval seconds before retrying..."
+          sleep $retry_interval
+        done
+
+        # Check if it reached max retries without successfully starting
+        if [ $retry_count -eq $max_retries ]; then
+          echo "Task failed to start after $max_retries attempts"
+          exit 1
+        fi
+
+    # Exiting the workflow if tasks are running successfully
+    - name: Exit workflow if tasks are running
+      if: env.done == '1'
+      run: exit 0
+

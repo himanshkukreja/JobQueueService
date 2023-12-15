@@ -12,12 +12,9 @@ COPY . .
 # Install Python dependencies
 RUN pip install -r requirements.txt
 
-# Install Supervisor
-RUN apt-get update && apt-get install -y supervisor
-
-# Supervisor configuration
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
+# Copy the start script
+COPY start.sh .
+RUN chmod +x start.sh
 
 #Set environment variables from build arguments
 
@@ -29,6 +26,4 @@ ENV AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
 
 ENV AWS_DEFAULT_REGION ap-south-1
 
-
-# Run Supervisor when the container starts
-CMD ["/usr/bin/supervisord"]
+CMD ["./start.sh"]
