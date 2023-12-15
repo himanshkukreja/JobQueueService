@@ -9,11 +9,25 @@
             "containerPort": 8000
           }
         ],
-        "cpu": 1024 ,
-        "memory": 900,
+        "cpu": 768 ,
+        "memory": 600,
         "image": "${APPLICATION_IMAGE}",
         "essential": true,
         "name": "job_queue_service_container"
+      },
+      {
+        "portMappings": [
+          {
+            "hostPort": 80,
+            "protocol": "tcp",
+            "containerPort": 80
+          }
+        ],
+        "cpu": 256,
+        "memory": 300 ,
+        "image": "${NGINX_IMAGE}",
+        "essential": true,
+        "name": "job_queue_service_nginx_container"
       }
     ],
     "placementConstraints": [],

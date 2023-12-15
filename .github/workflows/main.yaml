@@ -124,17 +124,17 @@ jobs:
           ${{ runner.os }}-buildx-
 
 
-    # Building, tagging, and pushing the nginx docker image to the ECR repository
-    # - name: Build, tag, and push Nginx image to Amazon ECR
-    #   id: build-nginx-image
-    #   uses: docker/build-push-action@v2
-    #   with:
-    #     context: ./nginx  # replace with your nginx Dockerfile directory
-    #     file: ./nginx/Dockerfile  # replace with your nginx Dockerfile path if it's different
-    #     push: true
-    #     tags: ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}-nginx:${{ env.SEMANTIC_TAG }}
-    #     cache-from: type=local,src=/tmp/.buildx-cache
-    #     cache-to: type=local,dest=/tmp/.buildx-cache
+    Building, tagging, and pushing the nginx docker image to the ECR repository
+    - name: Build, tag, and push Nginx image to Amazon ECR
+      id: build-nginx-image
+      uses: docker/build-push-action@v2
+      with:
+        context: ./nginx  # replace with your nginx Dockerfile directory
+        file: ./nginx/Dockerfile  # replace with your nginx Dockerfile path if it's different
+        push: true
+        tags: ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}-nginx:${{ env.SEMANTIC_TAG }}
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache
 
     
     # Building, tagging, and pushing the application Docker image to the ECR repository
