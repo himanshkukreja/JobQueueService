@@ -124,7 +124,7 @@ jobs:
           ${{ runner.os }}-buildx-
 
 
-    Building, tagging, and pushing the nginx docker image to the ECR repository
+    # Building, tagging, and pushing the nginx docker image to the ECR repository
     - name: Build, tag, and push Nginx image to Amazon ECR
       id: build-nginx-image
       uses: docker/build-push-action@v2
