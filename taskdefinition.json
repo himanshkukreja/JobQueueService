@@ -13,7 +13,17 @@
         "memory": 600,
         "image": "${APPLICATION_IMAGE}",
         "essential": true,
-        "name": "job_queue_service_container"
+        "name": "job_queue_service_container",
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-create-group": "true",
+                "awslogs-group": "/ecs/job_queue_service",
+                "awslogs-region": "ap-south-1",
+                "awslogs-stream-prefix": "ecs"
+            },
+            "secretOptions": []
+        }
       },
       {
         "portMappings": [
